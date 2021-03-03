@@ -1,0 +1,39 @@
+<nav th:fragment="navegacion"
+	class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+
+	<div class="container d-flex justify-content-between">
+
+		<div>
+			<a class="navbar-brand" th:href="@{/lista}">TransportesApp</a>
+
+		</div>
+
+		<div>
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item"><a class="nav-link" th:href="@{/lista}">Buses</a>
+				</li>
+				<li class="nav-item"><a class="nav-link" th:href="@{/rutas}">Rutas</a>
+				</li>
+				<li class="nav-item"><a class="nav-link"
+					th:href="@{/programaciones}">Programaciones</a></li>
+			</ul>
+		</div>
+
+		<div>
+			<span class="text-light">Bienvenido [[${session.sessionEmpleado.getNombres()}]]</span>
+			&nbsp;
+			<span	class="text-light"></span>&nbsp; 
+			<a class="btn btn-primary" th:href="@{/}">Salir</a>
+		</div>
+
+
+
+	</div>
+
+
+
+
+
+
+
+</nav>

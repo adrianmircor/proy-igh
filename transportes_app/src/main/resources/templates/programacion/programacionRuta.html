@@ -1,0 +1,138 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="icon" href="favicon.ico">
+
+<title>TransportesApp | Programacion por Ruta</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+	crossorigin="anonymous">
+
+</head>
+<body>
+
+	<header th:insert="fragments/navegacion :: navegacion"></header>
+
+
+	<main role="main ">
+		<section class="content">
+			<!-- FORMULARIO DE PROGRAMACION POR RUTA -->
+			<div class="container-fluid">
+				<div class="container pt-4">
+					<div class="card border-primary mt-5"
+						style="max-width: 50%; margin: auto">
+						<div class="card-header text-primary">
+							<h4>
+								Programación de <span
+									th:with="nombreRuta=${session.sessionRuta.getCiudadOrigen().getNombre()} + ' - ' 
+									+ ${session.sessionRuta.getCiudadDestino().getNombre()}"
+									th:text="${nombreRuta}"></span>
+							</h4>
+						</div>
+						<div class="card-body">
+
+							<div class="container-fluid">
+								<form th:action="@{/programacion/save}"
+									th:object="${programacion}" method="post">
+									
+									<input type="hidden" th:field="*{idProgramacion}">
+									<div class="form-row pb-3">
+										<div class="form-group col-md">
+											<label for="placaBus">Placa del Bus</label> <input
+												type="text" class="form-control" id="placaBus"
+												th:field="*{bus.placa}">
+										</div>
+									</div>
+
+									<div class="form-row row">
+										<div class="form-group col-md">
+											<label for="salidaProgramada">Salida Programada</label> <input
+												type="time" class="form-control" id="salidaProgramada"
+												th:field="*{salidaProgramada}">
+										</div>
+										<div class="form-group col-md">
+											<label for="llegadaProgramda">Llegada Programada</label> <input
+												type="time" class="form-control" id="llegadaProgramda"
+												th:field="*{llegadaProgramada}">
+										</div>
+									</div>
+
+
+									<div class="form-row row pb-3">
+										<div class="form-group col-md">
+											<label for="salidaReal">Salida Real</label> <input
+												type="time" class="form-control" id="salidaReal"
+												th:field="*{salidaReal}">
+										</div>
+
+										<div class="form-group col-md">
+											<label for="llegadaReal">Llegada Real</label> <input
+												type="time" class="form-control" id="llegadaReal"
+												th:field="*{llegadaReal}">
+										</div>
+									</div>
+
+									<div class="form-row pb-3">
+										<div class="form-group col-md">
+											<label for="cantidadPasajesEstandar">Cantidad de
+												Pasajes Estándar</label> <input type="text" class="form-control"
+												id="cantidadPasajesEstandar"
+												th:field="*{cantidadPasajesEstandar}">
+										</div>
+									</div>
+
+									<div class="form-row pb-4">
+										<div class="form-group col-md">
+											<label for="cantidadPasajesPremium">Cantidad de
+												Pasajes Premium</label> <input type="text" class="form-control"
+												id="cantidadPasajesPremium"
+												th:field="*{cantidadPasajesPremium}">
+										</div>
+									</div>
+
+
+									<div class="card-footer border-primary">
+										<div class="d-flex justify-content-md-center">
+											<button type="submit" class="btn btn-primary btn-lg"
+												style="margin: 1rem;">
+												<i class="fas fa-save" style="margin-right: 0.5rem"></i>
+												Guardar
+											</button>
+
+											<a type="button" class="btn btn-outline-secondary btn-lg"
+												style="margin: 1rem" th:href="@{/}"> <i
+												class="fas fa-times" style="margin-right: 0.5rem;"></i>
+												Cancelar
+											</a>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+		</section>
+
+		<!-- TABLA DE RUTAS -->
+
+		<section
+			th:insert="fragments/listaProgramacionRuta :: lista-programacion-ruta"></section>
+
+
+	</main>
+
+	<script src="https://kit.fontawesome.com/f4150c958d.js"
+		crossorigin="anonymous"></script>
+
+</body>
+</html>

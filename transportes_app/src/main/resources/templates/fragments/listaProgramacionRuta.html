@@ -1,0 +1,68 @@
+<meta charset="utf-8">
+
+<div th:fragment="lista-programacion-ruta" 
+	class="container-fluid" style="padding-top: 40px;">
+            <div class="card border-primary" style="max-width: 90%;margin:auto;">
+                <div class="card-header text-primary">
+                    <h4>Programación</h4>
+                </div>
+                <div class="card-body">
+                    <table id="tabledata_estudios" class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th>Placa del bus</th>
+                            <th>Salida Programada</th>
+                            <th>Llegada Programada</th>
+                            <th>Salida Real</th>
+                            <th>Llegada Real</th>
+                            <th>N° Pasajes Estandar</th>
+                            <th>N° Pasajes Premium</th>
+                            <th>Acciones</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="el : ${ListaProgramacionPorRuta}">
+                                <td>
+                                    <p class="text-dark" th:text="${el.bus.placa}" >-</p>
+                                </td>
+                                <td>
+                                    <p class="text-dark" th:text="${el.salidaProgramada}" >-</p>
+                                </td>
+                                <td>
+                                    <p class="text-dark" th:text="${el.llegadaProgramada}" >-</p>
+                                </td>
+                                <td>
+                                    <p class="text-dark" th:text="${el.salidaReal}" >-</p>
+                                </td>
+                                <td>
+                                    <p class="text-dark" th:text="${el.llegadaReal}" >-</p>
+                                </td>
+                                <td>
+                                    <p class="text-dark" th:text="${el.cantidadPasajesEstandar}" >-</p>
+                                </td>
+                                <td>
+                                    <p class="text-dark" th:text="${el.cantidadPasajesPremium}" >-</p>
+                                </td>
+                                <td>
+                                    <a th:href="@{/programacion/edit/{id} (id=${el.idProgramacion}) }"
+                                       class="btn btn-info btn-sm" role="button" title="Editar el registro.">
+                                        <i class="fas fa-pencil-alt" aria-hidden="true"></i>
+                                    </a>
+                                    <a th:href="@{/programacion/delete/{id} (id=${el.idProgramacion}) }"
+                                       class="btn btn-danger btn-sm" role="button" title="Eliminar registro">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
+</div>
+
+
+
+        
+        
